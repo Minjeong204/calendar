@@ -7,8 +7,8 @@ body {
     display: flex;
     width: 25%;
     height: 820px;
-    margin-top: -1%;
-    margin-left: -5pt;
+    margin-top: -1.8%;
+    margin-left: -6pt;
     justify-content: space-around;
     /* position: relative; */
 }
