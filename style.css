@@ -1,0 +1,153 @@
+body {
+    background-color: rgb(36, 158, 227);
+}
+
+#sideBar {
+    background-color: #37DBE6;
+    display: flex;
+    width: 25%;
+    height: 820px;
+    margin-top: -1%;
+    margin-left: -5pt;
+    justify-content: space-around;
+    /* position: relative; */
+}
+
+#sideBar>#item:first-child {
+    color: white;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 320%;
+    margin-left: 5%;
+    display: block;
+    padding-left: -9px;
+    margin-top: 20px;
+    margin-right: 3px;
+}
+
+#containor>#item {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    color: white;
+    font-size: 140%;
+    line-height: 18pt;
+    /* padding-inline-start: 2%; */
+    /* display: inline-block; */
+}
+#containor_todo > #item.on {
+background:#333;
+color:#fff;
+}
+
+#containor {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    line-height: 26px;
+    margin-left: -50pt;
+}
+
+#containor_todo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 46px;
+    position: absolute;
+    margin-top: 1%;
+}
+
+#todo {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 100px;
+    font-size: 120%;
+    color: white;
+    margin-left: -40pt;
+}
+#del {
+    color: red;
+
+    font-weight: bolder;
+    cursor: pointer;
+    position: sticky;
+   margin-right: 5px;
+   float: right; 
+}
+
+#chk {
+    font-weight: bold;
+    cursor: pointer;
+    color: green;
+   position: sticky;
+   margin-right: 20px;
+   float: right; 
+}
+
+#containor_todo>#item {
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-left: -50px;
+    margin-right: 14pt;
+    margin-top: 5pt;
+    color: white;
+    width: 240px;
+    height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: 300;
+    padding: 3%;
+}
+
+#containor_todo>#item:nth-child(2) {
+    margin-top: -15px;
+    /* margin-left: -108px; */
+    margin-right: 15pt;
+}
+
+
+
+#add_todo {
+    margin-top: -40px;
+    width: 25px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: gray;
+    margin-left: 125px;
+    cursor: pointer;
+}
+
+
+#calendar {
+    margin-left: 250pt;
+    margin-top: -840px;
+    color: white;
+    font-weight: 500;
+}
+
+table {
+    width: 98%;
+    height: 400px;
+}
+
+#month {
+    margin-top: -100px;
+}
+
+.txt {
+    margin-left: 3px;
+    width: 40%;
+    border: none;
+    border-bottom: 2px solid white;
+    background: none;
+    outline: none;
+    /* font-size: 18px; */
+    margin-top: 5%;
+    margin-bottom: 3%;
+    padding: 1%;
+}
+
+
+</style>

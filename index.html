@@ -6,204 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Calendar</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script type="text/javascript" src="./script.js"></script>
+
     <script>
-        $('#containor_todo').addClass('#containor_todo>#item');
-    </script>
-    <script>
-        var date = new Date();
+        $(document).ready(function () {
+            $("#add_todo").click(function () {
+                var task = $(".txt").val();
+                $('#containor_todo').append('<div id="item">' + task + '<span id="chk">V</span><span id="del">&nbsp;&nbsp;&nbsp;&nbsp;X</span></div>');
+                $(task).val('');
 
-        var calendarYear = date.getFullYear();
-        var calendarMonth = date.getMonth() + 1;
-        var monthStartDay = new Date(calendarYear, date.getMonth(), 1);
-        var calendarToday = date.getDate();
-        const monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        // 윤년 계산
-        if (calendarYear % 400 == 0) {
-            monthDays[1] = 29;
-        } else if (calendarYear % 100 == 0) {
-            monthDays[1] = 28;
-        } else if (calendarYear % 4 == 0) {
-            monthDays[1] = 29;
-        }
-        var monthLastDate = new Date(2022, 3, 0);
-        console.log(monthLastDate);
-        var monthLastDate = new Date(calendarYear, calendarMonth, 0);
-        // 달력 월의 마지막 일
-        var calendarMonthLastDate = monthLastDate.getDate();
-
-        console.log(calendarMonthLastDate);
-        var calendarMonthLastDate = monthDays[date.getMonth()];
-
-
-        console.log(calendarMonthLastDate);
-        var calendarMonthStartDay = monthStartDay.getDay();
-        var calendarWeekCount = Math.ceil((calendarMonthStartDay + calendarMonthLastDate) / 7);
-        console.log(calendarWeekCount);
+            });
+            $(document).on('click', '#del', removeList);
+            function removeList() {
+                $(this).parent('#item').remove();
+            }
+            $(document).on('click', '#chk', chkList);
+            function chkList(){
+        	$(this).parent('#item').toggleClass('on');
+   }
+        });
 
     </script>
-    <style>
-        body {
-            background-color: rgb(36, 158, 227);
-        }
 
-        #sideBar {
-            background-color: #37DBE6;
-            display: flex;
-            width: 25%;
-            height: 820px;
-            margin-top: -1%;
-            margin-left: -5pt;
-            justify-content: space-around;
-            /* position: relative; */
-        }
-
-        #sideBar>#item:first-child {
-            color: white;
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 600;
-            font-size: 320%;
-            margin-left: 5%;
-            display: block;
-            padding-left: -9px;
-            margin-top: 20px;
-            margin-right: 3px;
-        }
-
-        #containor>#item {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 300;
-            color: white;
-            font-size: 140%;
-            line-height: 18pt;
-            /* padding-inline-start: 2%; */
-            /* display: inline-block; */
-        }
-
-        #containor {
-            display: flex;
-            flex-direction: column;
-            margin-top: 30px;
-            line-height: 26px;
-            margin-left: -50pt;
-        }
-
-        #containor_todo {
-            display: flex;
-            flex-direction: column;
-            margin-left: 46px;
-            position: absolute;
-            margin-top: 1%;
-        }
-
-        #todo {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 500;
-            margin-top: 100px;
-            font-size: 120%;
-            color: white;
-            margin-left: -82pt;
-        }
-
-        #containor_todo>#item {
-            background-color: rgba(255, 255, 255, 0.5);
-            margin-left: -108px;
-            margin-right: 14pt;
-            margin-top: 5pt;
-            color: white;
-            width: 260%;
-            height: 20px;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            font-size: 13px;
-            font-weight: 300;
-            padding: 3%;
-        }
-
-        #containor_todo>#item:nth-child(2) {
-            margin-top: -15px;
-            /* margin-left: -108px; */
-            margin-right: 15pt;
-        }
-
-        #containor_schedule {
-
-            display: flex;
-            flex-direction: column;
-            margin-left: 46px;
-            position: absolute;
-            margin-top: 13%;
-        }
-
-        #containor_schedule>#schedule {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 500;
-            margin-top: 100px;
-            font-size: 120%;
-            color: white;
-            margin-left: -82pt;
-        }
-
-        #containor_schedule>#item {
-            background-color: rgba(255, 255, 255, 0.5);
-            margin-left: -108px;
-            margin-right: 14pt;
-            margin-top: 5pt;
-            color: white;
-            width: 260%;
-            height: 20px;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            font-size: 13px;
-            font-weight: 400;
-            padding: 3%;
-        }
-
-        #containor_schedule>#item:nth-child(2) {
-            margin-top: -15px;
-            /* margin-left: -108px; */
-            margin-right: 15pt;
-        }
-
-        #add_todo {
-            margin-top: -40px;
-            width: 25px;
-            border: none;
-            background-color: rgba(255, 255, 255, 0.5);
-            color: gray;
-            margin-left: 63px;
-        }
-        #add_sche {
-            margin-top: -40px;
-            width: 25px;
-            border: none;
-            background-color: rgba(255, 255, 255, 0.5);
-            color: gray;
-            margin-left: 63px;
-        }
-
-        #calendar {
-            margin-left: 250pt;
-            margin-top: -840px;
-            color: white;
-            font-weight: 500;
-        }
-
-        table {
-            width: 98%;
-            height: 400px;
-        }
-        #month{
-            margin-top: -100px;
-        }
-    </style>
-    <!-- Code injected by live-server -->
+    
+      
 </head>
 
 <body>
@@ -267,32 +95,26 @@
         <div id="containor_todo">
             <p id="todo">
                 Todo
+                <input type="text" placeholder="Add A Task" class="txt">
+
             </p>
-            <input type="button" id="add_todo" value="+">
+            <input type="button" id="add_todo" value="+" onclick="addtodo()">
             <div id="item">
                 NOTES TO BE MADE
+                <span id="chk">V</span><span id="del">X</span>
             </div>
             <div id="item">
                 DON’T FORGET ABOUT B-DAY.
+                <span id="chk">V</span><span id="del">X</span>
             </div>
             <div id="item">
                 Make a wish
+                <span id="chk">V</span><span id="del">X</span>
             </div>
         </div>
-        <div id="containor_schedule">
-            <p id="schedule">
-                Schedule
-            </p>
-            <input type="button" id="add_sche" value="+">
-            <div id="item">
-                NOTES TO BE MADE
-            </div>
-            <div id="item">
-                DON’T FORGET ABOUT B-DAY.
-            </div>
-        </div>
+
     </div>
-  
+
     <div id="calendar">
         <script>
             var date = new Date();
@@ -328,7 +150,7 @@
             var html = "";
             var html = "";
             html += "<table>";
-            html += "<caption style=\"font-size: 30px; font-weight: 300; color: white; text-align: center; padding: 50px 20px;\">"+0 + calendarMonth + "<br>"+calendarYear+"</caption>";
+            html += "<caption style=\"font-size: 30px; font-weight: 300; color: white; text-align: center; padding: 50px 20px;\">" + 0 + calendarMonth + "<br>" + calendarYear + "</caption>";
             html += "<thead>";
             html += "<tr>";
             html += "<th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THUR</th><th>FRI</th><th>SAT</th>";
@@ -337,28 +159,28 @@
             html += "<tbody>";
             // 위치
             var calendarPos = 0;
-// 날짜
-var calendarDay = 0;
-for (var index1 = 0; index1 < calendarWeekCount; index1++) {
-	html += "<tr>";
-	for (var index2 = 0; index2 < 7; index2++) {
-		html += "<td style=\"padding: 10px 10px; text-align: center;\">";
-		if (calendarMonthStartDay <= calendarPos && calendarDay < calendarMonthLastDate) {
-			calendarDay++;
-			html += "<span style=\"display: block; padding: 10px 10px;";
-			if (calendarDay == calendarToday) {
-				html += " border: none; border-radius: 0%; color: white; background-color: coral;";
-			}
-			html += "\">" + calendarDay + "</span>";
-		}
-		html += "</td>";
-		calendarPos++;
-	}
-	html += "</tr>";
-}
-html += "</tbody>";
-html += "</table>";
-$("#calendar").html(html);
+            // 날짜
+            var calendarDay = 0;
+            for (var index1 = 0; index1 < calendarWeekCount; index1++) {
+                html += "<tr>";
+                for (var index2 = 0; index2 < 7; index2++) {
+                    html += "<td style=\"padding: 10px 10px; text-align: center;\">";
+                    if (calendarMonthStartDay <= calendarPos && calendarDay < calendarMonthLastDate) {
+                        calendarDay++;
+                        html += "<span style=\"display: block; padding: 10px 10px;";
+                        if (calendarDay == calendarToday) {
+                            html += " border: none; border-radius: 0%; color: white; background-color: coral;";
+                        }
+                        html += "\">" + calendarDay + "</span>";
+                    }
+                    html += "</td>";
+                    calendarPos++;
+                }
+                html += "</tr>";
+            }
+            html += "</tbody>";
+            html += "</table>";
+            $("#calendar").html(html);
         </script>
     </div>
 </body>
